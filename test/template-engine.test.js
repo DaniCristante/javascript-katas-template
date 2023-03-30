@@ -13,3 +13,11 @@ it("It replace one variable with null content", () => {
     expect(replaceText("Bye, ${name}!", { name: "" })).toEqual("Bye, !");
     expect(replaceText("Hello, ${name}!", { name: undefined })).toEqual("Hello, !");
 });
+
+it("It replaces two variables", () => {
+    expect(replaceText("Hello, ${name}! I'm ${age} years old.", { name: "John", age: 3 })).toEqual("Hello, John! I'm 3 years old.");
+});
+
+// it("It replaces three variables", () => {
+//     expect(replaceText("Hello, ${name} ${surname}! I'm ${age} years old.", { name: "John", surname: "Smith", age: 3 })).toEqual("Hello, John Smith! I'm 3 years old.");
+// });
