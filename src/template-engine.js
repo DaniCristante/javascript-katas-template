@@ -1,14 +1,14 @@
 function replaceText(template, dictionary) {
 
-    var outputText = template;
+    var replacedTemplate = template;
 
-    var objectKeys = Object.getOwnPropertyNames(dictionary);
+    var dictionaryKeys = Object.getOwnPropertyNames(dictionary);
 
-    for (let key in objectKeys) {
-        outputText = ReplaceVariable(outputText, dictionary, objectKeys[key]);
+    for (let key in dictionaryKeys) {
+        replacedTemplate = ReplaceVariable(replacedTemplate, dictionary, dictionaryKeys[key]);
     }
-    
-    return outputText;
+
+    return replacedTemplate;
 
 };
 
