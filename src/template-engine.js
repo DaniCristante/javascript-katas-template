@@ -1,6 +1,8 @@
 function replaceText(template, dictionary) {
-    // return "Hello, ${name}!";
+    if (dictionary.name === null) {
+        return template.replace("${name}", "");
+    }
     return template.replace("${name}", dictionary.name);
-}
+};
 
 export { replaceText };

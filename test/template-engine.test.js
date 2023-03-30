@@ -6,3 +6,7 @@ it("It replace one variable", () => {
     expect(replaceText("Hello, ${name}!", { name: "Bob" })).toEqual("Hello, Bob!");
     expect(replaceText("Bye, ${name}!", { name: "Alice" })).toEqual("Bye, Alice!");
 });
+
+it("It replace one variable with null content", () => {
+    expect(replaceText("Hello, ${name}!", { name: null })).toEqual("Hello, !");
+});
