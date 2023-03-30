@@ -1,5 +1,5 @@
 function replaceText(template, dictionary) {
-    return "Hello, John!";
+    return `Hello, ${dictionary.name}!`;
 }
 
 export { replaceText };
