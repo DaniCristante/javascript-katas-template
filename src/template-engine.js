@@ -1,14 +1,20 @@
 function replaceText(template, dictionary) {
 
-    var replacedTemplate = template;
-
     var dictionaryKeys = Object.getOwnPropertyNames(dictionary);
 
     for (let key in dictionaryKeys) {
-        replacedTemplate = ReplaceVariable(replacedTemplate, dictionary, dictionaryKeys[key]);
+        if (template.includes(`\${${dictionaryKeys[key]}}`) == false) {
+            throw new Error(`Variable \${${dictionaryKeys[key]}} is not present in template.`);
+        }
+
+        template = ReplaceVariable(template, dictionary, dictionaryKeys[key]);
     }
 
-    return replacedTemplate;
+    if (/\${\w+}/.test(template)) {
+        throw new Error("Some variables are not replaced.");
+    }
+
+    return template;
 
 };
 
@@ -20,6 +26,7 @@ function ReplaceVariable(template, dictionary, dictionaryKey) {
     } else {
         outputText = template.replace(`\${${dictionaryKey}}`, dictionary[dictionaryKey]);
     }
+
     return outputText;
 }
 

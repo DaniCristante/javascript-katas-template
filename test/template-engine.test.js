@@ -21,3 +21,8 @@ it("It replaces two variables", () => {
 it("It replaces three variables", () => {
     expect(replaceText("Hello, ${name} ${surname}! I'm ${age} years old.", { name: "John", surname: "Smith", age: 3 })).toEqual("Hello, John Smith! I'm 3 years old.");
 });
+
+it("It fails if variable is not present in template", () => {
+    expect(() => replaceText("Hello, ${name}!", { surname: "Smith" })).toThrow("Variable ${surname} is not present in template.");
+    expect(() => replaceText("Hello, ${name} ${surname}!", { name: "John" })).toThrow("Some variables are not replaced.");
+});
